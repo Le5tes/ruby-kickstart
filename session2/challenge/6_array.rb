@@ -14,3 +14,10 @@
 # prime_chars? ['ab', 'cd']       # => false
 # prime_chars? ['a', 'bcd']       # => false
 # prime_chars? ['a', 'b', 'cd']   # => false
+#
+def prime_chars? array
+	length = array.join.length
+	return false if length == 0
+	(length/4).times {|i| return false if (length % (i + 2)) == 0}
+	true
+end

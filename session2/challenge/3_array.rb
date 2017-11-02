@@ -7,5 +7,8 @@
 
 class String
   def every_other_char
+	return_string = ""
+	self.scan(/(.)(.)/){|x,y| return_string << y}
+	return_string
   end
 end

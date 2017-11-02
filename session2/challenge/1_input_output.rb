@@ -8,5 +8,6 @@
 # "11\n7\n18\n" to standard output.
 
 def sum_difference_product
-  # your code goes here
+	nums = gets.chomp.split.map(&:to_i)
+	print "#{nums.sum.to_s}\n#{(nums[0]-nums[1]).to_s}\n#{(nums[0] * nums[1]).to_s}\n"
 end

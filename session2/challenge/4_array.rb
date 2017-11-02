@@ -6,4 +6,6 @@
 # get_squares [9,3,81]                 # => [3, 9]
 # get_squares [25, 4, 9, 6, 50, 16, 5] # => [4, 5]
 
-# This time you will have to define the method, it's called: get_squares
+def get_squares array
+	array.select {|x| !((array.select {|y| y == (x ** 2)}).empty?)}.sort
+end
