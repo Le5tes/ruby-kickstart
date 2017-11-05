@@ -29,4 +29,14 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  return_hash = Hash.new {|hash, key| hash[key] = Array.new(2)}
+  return_array = []
+  a.each{|x|
+    return_hash[x][0]= true
+  }
+  b.each{|y|
+    return_hash[y][1] = true
+  }
+return_hash.each {|key,value| return_array << key if value[0] == value[1]}
+  [return_hash,return_array]
 end

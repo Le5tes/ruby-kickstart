@@ -52,5 +52,10 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-def your_sort
+def your_sort an_array, &block
+block = Proc.new{|a,b| a<=>b} unless block
+
+ary1,ary2,ary3 = an_array.select{|x| block.call(x, an_array[0]) == -1},an_array.select{|x| block.call(x, an_array[0]) == 0},an_array.select{|x| block.call(x, an_array[0]) == 1}
+return (ary1.length <= 1 && ary3.length <=1) ?  [ary1,ary2,ary3].flatten : [your_sort(ary1, &block),ary2,your_sort(ary3, &block)].flatten
+
 end

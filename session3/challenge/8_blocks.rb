@@ -26,9 +26,10 @@
 
 
 class Person
-  attr_accessor :name
+  attr_accessor :name, :age, :quote
 
-  def initialize(&initializer)
+  def initialize(inputs = {}, &initializer)
+    @name, @age, @quote = inputs[:name], inputs[:age], inputs[:quote]
     @initializer = initializer
     initializer.call self
   end

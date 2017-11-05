@@ -37,26 +37,26 @@ class HTMLTag
   attr_accessor :name, :innerHTML, :options
 
   # options: :multiline should be true or false
-  def initialize(name, innerHTML, options)
+  def initialize(name, innerHTML, options= {})
     @name, @innerHTML, @options = name, innerHTML, options
   end
 
   def font
-    font = options[:font]  #  one of :serif, :sans_serif, or :monospace
+    font = @options[:font]  #  one of :serif, :sans_serif, or :monospace
     FONTS[font]
   end
 
   def color
-	color = options[:color]
+	color = @options[:color]
 	COLORS[color]
   end
 
   def style
-   (options[color] || options[font]) ? "style=#{"color:#{color}"if options[:color]}#{";"if options[color] && options[font]}#{"font-family:#{font}"if options[:font]}" : nil
+   (@options[color] || @options[font]) ? "style=#{"color:#{color}"if @options[:color]}#{";"if @options[color] && @options[font]}#{"font-family:#{font}"if @options[:font]}" : nil
   end
 
   def to_s
-    line_end = if options[:multiline] then "\n" else "" end
+    line_end = if @options[:multiline] then "\n" else "" end
     "<#{name} #{style}>#{line_end}"  \
     "#{innerHTML.chomp}#{line_end}"  \
     "</#{name}>\n"

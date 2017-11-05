@@ -29,5 +29,8 @@
 # create it from scratch :)
 
 
-def pathify
+def pathify directory
+  arr = []
+   directory.each {|key, value| arr << ((value.is_a? Hash) ? pathify(value) : value).map{|x| key + '/' + x} }
+   arr.flatten
 end

@@ -21,11 +21,18 @@
 # problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
 # problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
 
-def problem_14
+def problem_14 *args
+  hash = {}
+  (args[-1].is_a? Hash) ? hash = args[-1] : hash = {:problem => :count_clumps}
+  args.pop
+  method(hash[:problem]).call(*args)
 end
 
-def same_ends
+def same_ends *args
+  arr = args[1...args.length]
+  arr[0...args[0]] == arr[-(args[0])..-1]
 end
 
-def count_clumps
+def count_clumps *args
+  args.select.with_index {|x,i| x == args[i-1] && x!= args[i+1] && i!=1 }.length
 end
