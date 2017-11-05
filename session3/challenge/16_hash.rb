@@ -13,5 +13,12 @@
 # head = {:data => 5, :next => head}
 # print_list head                    # >> "5\n4\n3\n2\n1\n"
 # head = {:data => 6, :next => head}
-# print_list head                    # >> "6\n5\n4\n3\n2\n1\n"
+# print_list head 
 
+def print_list head
+my_head = head
+  while my_head[:next] != nil do
+    puts my_head[:data]
+    my_head = my_head[:next]
+  end
+end

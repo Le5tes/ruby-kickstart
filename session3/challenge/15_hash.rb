@@ -38,3 +38,13 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+def middle head
+  ary = []
+  my_head = head
+  while my_head[:next] != nil do
+    ary << my_head[:data]
+    my_head = my_head[:next]
+  end
+  ary[-(ary.length / 2)]
+end
