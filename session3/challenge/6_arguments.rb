@@ -17,3 +17,9 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def matchmaker *params
+	return_array = []
+	params.each_index {|i| return_array << (params[0] ^ (!params[i] == !params[i+1])) if i.odd?} 
+	return_array
+end
+

@@ -16,3 +16,10 @@
 #   order << i
 # end
 # order # => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+#
+def spiral_access (twod_array, &block)
+	return nil if twod_array.empty?
+	twod_array[0].each(&block)
+	spiral_access(twod_array[1...(twod_array.length)].transpose.reverse, &block)
+end
+

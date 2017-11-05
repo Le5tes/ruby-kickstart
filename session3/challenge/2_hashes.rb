@@ -7,4 +7,10 @@
 # staircase 3  # => {1 => [], 3 => [2]}
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
-
+def staircase number
+	returnvalue = Hash.new
+	for x in 1..number do
+		if x.odd? then returnvalue[x] = (1...x).select {|i| i.even?} end
+ 	end
+	returnvalue
+end
